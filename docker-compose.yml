@@ -1,0 +1,10 @@
+version: "3"
+
+services:
+    fer_model:
+        build: .
+        volumes:
+            - ./app/:/fer_model/app/
+        ports:
+            - 5000:5000
+        command: bash -c "python ./app/main.py"
