@@ -1,29 +1,32 @@
-from fastapi import FastAPI, File, UploadFile
+from fastapi import FastAPI, File, UploadFile, status, HTTPException
 from fer_model import predict_fer
+import filetype
 import uvicorn
 import shutil
-import base64
-import json
 import os
-
 
 app = FastAPI()
 
 
-@app.post("/api/upload_image")
+@app.post("/api/upload_image", status_code=status.HTTP_200_OK)
 async def upload_image(image: UploadFile = File(...)):
     with open("image.png", "wb") as buffer:
         shutil.copyfileobj(image.file, buffer)
-    success = predict_fer.detect_face("image.png")
-    if success == "successful":
+
+    if not filetype.is_image("image.png"):
+        os.remove("image.png")
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Please upload an image file format.",
+        )
+    try:
+        success = predict_fer.detect_face("image.png")
         emotion, value = predict_fer.predict_facial_expression("image.png")
+        return {"emotion": emotion, "prediciton_value": value}
+    except Exception as e:
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(e))
+    finally:
         os.remove("image.png")
-        resp = {"data": {"emotion": emotion, "value": value}}
-        return json.dumps(resp)
-    else:
-        os.remove("image.png")
-        resp = {"error": {"message": success}}
-        return json.dumps(resp)
 
 
 if __name__ == "__main__":

@@ -60,11 +60,10 @@ def detect_face(image):
     img = cv2.imread(image, 0)
     dedected = detector(img, 1)
     if len(dedected) == 0:
-        return "No face detected, please try again."
+        raise Exception("No face detected, please try again.")
     elif len(dedected) > 1:
-        return "More than one face detected, please try again."
+        raise Exception("More than one face detected, please try again.")
     else:
         for i, d in enumerate(dedected):
             crop = img[d.top() : d.bottom(), d.left() : d.right()]
             cv2.imwrite(image, crop)
-            return "successful"

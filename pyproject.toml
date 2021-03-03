@@ -12,6 +12,7 @@ dlib = "^19.21.1"
 opencv-python = "^4.5.1"
 tensorflow = "^2.4.1"
 python-multipart = "^0.0.5"
+filetype = "ˆ1.0.7"
 
 [tool.poetry.dev-dependencies]
 pytest = "^4.6"
