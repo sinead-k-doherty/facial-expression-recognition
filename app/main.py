@@ -22,7 +22,7 @@ async def upload_image(image: UploadFile = File(...)):
     try:
         success = predict_fer.detect_face("image.png")
         emotion, value = predict_fer.predict_facial_expression("image.png")
-        return {"emotion": emotion, "prediciton_value": value}
+        return {"emotion": emotion, "prediction_value": value}
     except Exception as e:
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(e))
     finally:

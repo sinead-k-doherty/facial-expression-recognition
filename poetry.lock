@@ -163,6 +163,14 @@ optional = false
 python-versions = "*"
 
 [[package]]
+name = "filetype"
+version = "1.0.7"
+description = "Infer file type and MIME type of any file/buffer. No external dependencies."
+category = "main"
+optional = false
+python-versions = "*"
+
+[[package]]
 name = "flatbuffers"
 version = "1.12"
 description = "The FlatBuffers serialization format for Python"
@@ -764,7 +772,7 @@ python-versions = "*"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "69f6b3d864a3e205a141e59c46d0055ea258e295144bb735a261ea7b9a760435"
+content-hash = "d83803744c2022343a21f46b6914b80148bce1a7d440c4fbe080d0d2ef2c9624"
 
 [metadata.files]
 absl-py = [
@@ -828,6 +836,10 @@ fastapi = [
 filelock = [
     {file = "filelock-3.0.12-py3-none-any.whl", hash = "sha256:929b7d63ec5b7d6b71b0fa5ac14e030b3f70b75747cef1b10da9b879fef15836"},
     {file = "filelock-3.0.12.tar.gz", hash = "sha256:18d82244ee114f543149c66a6e0c14e9c4f8a1044b5cdaadd0f82159d6a6ff59"},
+]
+filetype = [
+    {file = "filetype-1.0.7-py2.py3-none-any.whl", hash = "sha256:353369948bb1c09b8b3ea3d78390b5586e9399bff9aab894a1dff954e31a66f6"},
+    {file = "filetype-1.0.7.tar.gz", hash = "sha256:da393ece8d98b47edf2dd5a85a2c8733e44b769e32c71af4cd96ed8d38d96aa7"},
 ]
 flatbuffers = [
     {file = "flatbuffers-1.12-py2.py3-none-any.whl", hash = "sha256:9e9ef47fa92625c4721036e7c4124182668dc6021d9e7c73704edd395648deb9"},

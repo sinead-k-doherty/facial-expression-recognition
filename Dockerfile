@@ -15,10 +15,10 @@ WORKDIR /fer_model
 RUN poetry config virtualenvs.create false \
     && poetry install
 
+RUN poetry install --no-interaction --no-root
+
 COPY app/ /fer_model/app/
 
 COPY test_images/ /fer_model/test_images/
 
 EXPOSE 5000
-
-# CMD [".venv/bin/python", "./app/main.py"]

@@ -5,6 +5,7 @@ services:
         build: .
         volumes:
             - ./app/:/fer_model/app/
+            - ./training_images/:/fer_model/training_images/
         ports:
             - 5000:5000
         command: bash -c "python ./app/main.py"
