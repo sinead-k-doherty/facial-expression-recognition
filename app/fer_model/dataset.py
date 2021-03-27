@@ -66,12 +66,9 @@ def load_train_images(image_size, fields):
 
     for field in fields:
         index = fields.index(field)
-        files_png = glob.glob(
-            "/home/sinead/Documents/images/training_images/" + field + "/*.png"
-        )
-        files_tiff = glob.glob(
-            "/home/sinead/Documents/images/training_images/" + field + "/*.tiff"
-        )
+        files_png = glob.glob("/fer_model/images/training_images/" + field + "/*.png")
+        files_tiff = glob.glob("/fer_model/images/training_images/" + field + "/*.tiff")
+
         files = files_png + files_tiff
 
         for file in files:

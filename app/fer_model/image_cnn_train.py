@@ -1,7 +1,9 @@
 import dataset
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
 from numpy.random import seed
-from tensorflow import set_random_seed
+
+tf.compat.v1.disable_eager_execution()
+tf.disable_v2_behavior()
 
 total_iterations = 0
 
@@ -28,7 +30,7 @@ def create_convolutional_layer(
         input=input, filter=weights, strides=[1, 1, 1, 1], padding="SAME"
     )
     layer += biases
-    layer = create_max_pooling_layer()
+    layer = create_max_pooling_layer(layer)
     return tf.nn.relu(layer)
 
 
@@ -100,7 +102,7 @@ def train(
                 epoch, feed_dict_tr, feed_dict_val, val_loss, session, accuracy
             )
             # Save model
-            saver.save(session, "./fer-model2")
+            saver.save(session, "./app/fer_model/fer-model2")
 
     total_iterations += num_iteration
 
@@ -109,10 +111,11 @@ def build_cnn_model():
     # Setting seed for random initialisation
     # For stable results when training
     seed(1)
-    set_random_seed(2)
+    tf.set_random_seed(2)
 
     # Train in the images in batches of 33 images
     batch_size = 33
+
     classes = ["happy", "sad", "angry"]
     num_classes = len(classes)
     img_size = 128
@@ -215,4 +218,7 @@ def build_cnn_model():
     saver = tf.train.Saver()
 
     # train model
-    train(3000, session, accuracy, batch_size, x, y_true, optimiser, cost, saver)
+    train(3000, session, accuracy, data, batch_size, x, y_true, optimiser, cost, saver)
+
+
+build_cnn_model()

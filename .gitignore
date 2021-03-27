@@ -1,7 +1,7 @@
 .vscode
 .DS_Store
-training_images/*
-!training_images/.keep
+images/*
+!images/testing_images
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

@@ -5,7 +5,7 @@ services:
         build: .
         volumes:
             - ./app/:/fer_model/app/
-            - ./training_images/:/fer_model/training_images/
+            - ./images/:/fer_model/images/
         ports:
             - 5000:5000
-        command: bash -c "python ./app/main.py"
+        command: bash -c "./.venv/bin/python3.8 ./app/main.py"

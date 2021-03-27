@@ -1,9 +1,7 @@
-import tensorflow as tf
 import tensorflow.compat.v1 as tf
 
 tf.disable_v2_behavior()
 import numpy as np
-import dlib
 import cv2
 
 
@@ -53,17 +51,3 @@ def predict_facial_expression(image):
     index = prediction[0].index(value)
     emotion = classes[index]
     return str(emotion), str(value)
-
-
-def detect_face(image):
-    detector = dlib.get_frontal_face_detector()
-    img = cv2.imread(image, 0)
-    dedected = detector(img, 1)
-    if len(dedected) == 0:
-        raise Exception("No face detected, please try again.")
-    elif len(dedected) > 1:
-        raise Exception("More than one face detected, please try again.")
-    else:
-        for i, d in enumerate(dedected):
-            crop = img[d.top() : d.bottom(), d.left() : d.right()]
-            cv2.imwrite(image, crop)
