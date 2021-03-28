@@ -16,5 +16,5 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
           registry: ghcr.io
           repository: sinead-k-doherty/facial-ex-recognition
-          tags: ${{ github.sha }}
+          tags: latest
           dockerfile: Dockerfile
