@@ -96,10 +96,7 @@ def read_train_sets(data_size, classes, data_type):
         pass
 
     datasets = Datasets()
-    if data_type == "images":
-        data, labels, data_names, cls = load_train_images(data_size, classes)
-    else:
-        data, labels, data_names, cls = load_train_music(classes)
+    data, labels, data_names, cls = load_train_images(data_size, classes)
     data, labels, data_names, cls = shuffle(data, labels, data_names, cls)
 
     validation_size = int(0.2 * data.shape[0])

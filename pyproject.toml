@@ -6,20 +6,9 @@ authors = ["Sinead O'Doherty <sinead_k_doherty@hotmail.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.8"
-fastapi = "^0.63.0"
-numpy = "1.19.5"
 dlib = "^19.21.1"
-opencv-python = "^4.5.1"
-tensorflow = "^2.4.1"
-python-multipart = "^0.0.5"
-filetype = "ˆ1.0.7"
-sklearn = "^0.0"
 
 [tool.poetry.dev-dependencies]
-pytest = "^4.6"
-uvicorn = "^0.13.4"
-black = "^20.8b1"
-pre-commit = "^2.10.1"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

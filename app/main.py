@@ -1,5 +1,5 @@
 from fastapi import FastAPI, File, UploadFile, status, HTTPException
-from fer_model import utility_functions
+from fer_model import predict_fer, utility_functions
 
 import filetype
 import uvicorn
@@ -22,7 +22,7 @@ async def upload_image(image: UploadFile = File(...)):
         )
     try:
         success = utility_functions.detect_face("image.png")
-        emotion, value = utility_functions.predict_facial_expression("image.png")
+        emotion, value = predict_fer.predict_facial_expression("image.png")
         return {"emotion": emotion, "prediction_value": value}
     except Exception as e:
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(e))
